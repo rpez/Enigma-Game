@@ -10,16 +10,33 @@ public class LetterField : MonoBehaviour
     private string encryptedLetter;
     private Action<string, string> onChangeCallback;
 
+    private bool editing;
+
     public void Initalize(string letter, Action<string, string> callback)
     {
         encryptedLetter = letter;
         onChangeCallback = callback;
     }
 
-    public void OnValueChanged()
+    public void OnChange()
     {
-        inputField.text = inputField.text[inputField.text.Length - 1].ToString();
+        if (!editing) return;
+
+        if (inputField.text.Length > 1)
+        {
+            inputField.text = inputField.text[inputField.text.Length - 1].ToString().ToLower();
+        }
         onChangeCallback.Invoke(encryptedLetter, inputField.text);
+    }
+
+    public void OnSelect()
+    {
+        editing = true;
+    }
+
+    public void OnDeselect()
+    {
+        editing = false;
     }
 
     // Start is called before the first frame update

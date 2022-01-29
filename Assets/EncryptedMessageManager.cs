@@ -14,6 +14,8 @@ public class EncryptedMessageManager : MonoBehaviour
     private List<LetterField> letterFields;
 
     private Dictionary<string, List<int>> letterIndexConnections;
+    private Dictionary<string, List<int>> updatedLetters =  new Dictionary<string, List<int>>();
+    private string[] currentLetters;
 
     public void GenerateMessage(string text)
     {
@@ -21,41 +23,63 @@ public class EncryptedMessageManager : MonoBehaviour
         letterFieldTexts = new List<TMP_InputField>();
         letterFields = new List<LetterField>();
         letterIndexConnections = new Dictionary<string, List<int>>();
+        currentLetters = new string[text.Length];
 
+        int whiteSpaceOffset = 0;
         for (int i = 0; i < text.Length; i++)
         {
-            GameObject obj = GameObject.Instantiate(letterFieldPrefab, transform);
-            letterFieldObjects.Add(obj);
-            obj.transform.position = obj.transform.position + Vector3.right * i * 20;
-
-            TMP_InputField field = obj.GetComponent<TMP_InputField>();
-            letterFieldTexts.Add(field);
-
-            LetterField letterScript = obj.GetComponent<LetterField>();
             string letter = text[i].ToString();
-            letterScript.Initalize(letter, UpdateCipherLetters);
-            letterFields.Add(letterScript);
-
-            letterFieldTexts[i].placeholder.GetComponent<TMP_Text>().text = letter;
-
-            if (letterIndexConnections.ContainsKey(letter))
+            if (letter != " ")
             {
-                letterIndexConnections[letter].Add(i);
+                GameObject obj = GameObject.Instantiate(letterFieldPrefab, transform);
+                obj.name = "TextField" + i;
+                letterFieldObjects.Add(obj);
+                obj.transform.position = obj.transform.position + Vector3.right * i * 20;
+
+                TMP_InputField field = obj.GetComponent<TMP_InputField>();
+                letterFieldTexts.Add(field);
+
+                LetterField letterScript = obj.GetComponent<LetterField>();
+                letterScript.Initalize(letter, UpdateCipherLetters);
+                letterFields.Add(letterScript);
+
+                field.placeholder.GetComponent<TMP_Text>().text = letter;
+                currentLetters[i - whiteSpaceOffset] = "";
+
+                if (letterIndexConnections.ContainsKey(letter))
+                {
+                    letterIndexConnections[letter].Add(i - whiteSpaceOffset);
+                }
+                else
+                {
+                    letterIndexConnections.Add(letter, new List<int>());
+                    letterIndexConnections[letter].Add(i - whiteSpaceOffset);
+                }
             }
             else
             {
-                letterIndexConnections.Add(letter, new List<int>());
-                letterIndexConnections[letter].Add(i);
+                whiteSpaceOffset++;
             }
         }
     }
 
     public void UpdateCipherLetters(string letter, string updatedLetter)
     {
+        for (int i = 0; i < currentLetters.Length; i++)
+        {
+            if (!letterIndexConnections[letter].Contains(i))
+            {
+                if (currentLetters[i] == updatedLetter) {
+                    currentLetters[i] = "";
+                    letterFieldTexts[i].text = "";
+                }
+            }
+        }
         for (int i = 0; i < letterIndexConnections[letter].Count; i++)
         {
             int index = letterIndexConnections[letter][i];
             letterFieldTexts[index].text = updatedLetter;
+            currentLetters[index] = updatedLetter;
         }
     }
 
