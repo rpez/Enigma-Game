@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EncryptedMessageManager : MonoBehaviour
@@ -9,14 +10,52 @@ public class EncryptedMessageManager : MonoBehaviour
     private string testString = "This is a message";
 
     private List<GameObject> letterFieldObjects;
+    private List<TMP_InputField> letterFieldTexts;
+    private List<LetterField> letterFields;
+
+    private Dictionary<string, List<int>> letterIndexConnections;
 
     public void GenerateMessage(string text)
     {
         letterFieldObjects = new List<GameObject>();
+        letterFieldTexts = new List<TMP_InputField>();
+        letterFields = new List<LetterField>();
+        letterIndexConnections = new Dictionary<string, List<int>>();
+
         for (int i = 0; i < text.Length; i++)
         {
-            letterFieldObjects.Add(GameObject.Instantiate(letterFieldPrefab, transform));
-            letterFieldObjects[i].transform.position = letterFieldObjects[i].transform.position + Vector3.right * i;
+            GameObject obj = GameObject.Instantiate(letterFieldPrefab, transform);
+            letterFieldObjects.Add(obj);
+            obj.transform.position = obj.transform.position + Vector3.right * i * 20;
+
+            TMP_InputField field = obj.GetComponent<TMP_InputField>();
+            letterFieldTexts.Add(field);
+
+            LetterField letterScript = obj.GetComponent<LetterField>();
+            string letter = text[i].ToString();
+            letterScript.Initalize(letter, UpdateCipherLetters);
+            letterFields.Add(letterScript);
+
+            letterFieldTexts[i].placeholder.GetComponent<TMP_Text>().text = letter;
+
+            if (letterIndexConnections.ContainsKey(letter))
+            {
+                letterIndexConnections[letter].Add(i);
+            }
+            else
+            {
+                letterIndexConnections.Add(letter, new List<int>());
+                letterIndexConnections[letter].Add(i);
+            }
+        }
+    }
+
+    public void UpdateCipherLetters(string letter, string updatedLetter)
+    {
+        for (int i = 0; i < letterIndexConnections[letter].Count; i++)
+        {
+            int index = letterIndexConnections[letter][i];
+            letterFieldTexts[index].text = updatedLetter;
         }
     }
 
