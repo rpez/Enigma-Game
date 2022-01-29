@@ -22,30 +22,38 @@ public class EncryptedMessageManager : MonoBehaviour
         letterFields = new List<LetterField>();
         letterIndexConnections = new Dictionary<string, List<int>>();
 
+        int whiteSpaceOffset = 0;
         for (int i = 0; i < text.Length; i++)
         {
-            GameObject obj = GameObject.Instantiate(letterFieldPrefab, transform);
-            letterFieldObjects.Add(obj);
-            obj.transform.position = obj.transform.position + Vector3.right * i * 20;
-
-            TMP_InputField field = obj.GetComponent<TMP_InputField>();
-            letterFieldTexts.Add(field);
-
-            LetterField letterScript = obj.GetComponent<LetterField>();
             string letter = text[i].ToString();
-            letterScript.Initalize(letter, UpdateCipherLetters);
-            letterFields.Add(letterScript);
-
-            letterFieldTexts[i].placeholder.GetComponent<TMP_Text>().text = letter;
-
-            if (letterIndexConnections.ContainsKey(letter))
+            if (letter != " ")
             {
-                letterIndexConnections[letter].Add(i);
+                GameObject obj = GameObject.Instantiate(letterFieldPrefab, transform);
+                letterFieldObjects.Add(obj);
+                obj.transform.position = obj.transform.position + Vector3.right * i * 20;
+
+                TMP_InputField field = obj.GetComponent<TMP_InputField>();
+                letterFieldTexts.Add(field);
+
+                LetterField letterScript = obj.GetComponent<LetterField>();
+                letterScript.Initalize(letter, UpdateCipherLetters);
+                letterFields.Add(letterScript);
+
+                field.placeholder.GetComponent<TMP_Text>().text = letter;
+
+                if (letterIndexConnections.ContainsKey(letter))
+                {
+                    letterIndexConnections[letter].Add(i - whiteSpaceOffset);
+                }
+                else
+                {
+                    letterIndexConnections.Add(letter, new List<int>());
+                    letterIndexConnections[letter].Add(i - whiteSpaceOffset);
+                }
             }
             else
             {
-                letterIndexConnections.Add(letter, new List<int>());
-                letterIndexConnections[letter].Add(i);
+                whiteSpaceOffset++;
             }
         }
     }

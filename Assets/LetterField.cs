@@ -18,7 +18,10 @@ public class LetterField : MonoBehaviour
 
     public void OnValueChanged()
     {
-        inputField.text = inputField.text[inputField.text.Length - 1].ToString();
+        if (inputField.text.Length > 1)
+        {
+            inputField.text = inputField.text[inputField.text.Length - 1].ToString().ToLower();
+        }
         onChangeCallback.Invoke(encryptedLetter, inputField.text);
     }
 
