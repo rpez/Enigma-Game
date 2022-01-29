@@ -4,36 +4,65 @@ using UnityEngine;
 
 public class PanelManager : MonoBehaviour
 {
+    [SerializeField] Message[] messagesArray;
+    [SerializeField] Order[] orderArray;
 
-    const string alphabet = "ABCDEFGHIJKLMNOPQRSTUVXYZ";
-    Dictionary<char, char> cipher;
+    [SerializeField] OrderButton orderButtonPrefab;
+    [SerializeField] GameObject orderContainer;
+
+    const string alphabet = "abcdefghijklmnopqrstuvxyz";
+    Dictionary<string, string> cipher;
+    List<Message> messages;
+
+    private float roundTimer;
+    private int round = 1;
 
     // Start is called before the first frame update
     void Start()
     {
         cipher = CreateCipher();
-        string encryptedMessage1 = Encrypt("HELLO WORLD");
-        string encryptedMessage2 = Encrypt("HELLO AGAIN");
-        Debug.Log(encryptedMessage1);
-        Debug.Log(encryptedMessage2);
+        roundTimer = 0f;
+        messages = new List<Message>(messagesArray);
+
+        for (int i = 0; i < 10; i++)
+        {
+            OrderButton button = Instantiate(orderButtonPrefab, orderContainer.transform);
+            button.Initialize("Send Units");
+        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        roundTimer += Time.deltaTime;
+        foreach (Message message in messages)
+        {
+            if (message.round == round && roundTimer >= message.time)
+            {
+                string encryptedMessage = Encrypt(message.message);
+                NewMessage(encryptedMessage);
+                messages.Remove(message);
+                break;
+            }
+        }
     }
 
-    Dictionary<char, char> CreateCipher()
+    void NewMessage(string message)
+    {
+        Debug.Log(message);
+    }
+
+    Dictionary<string, string> CreateCipher()
     {
         // Map every letter to another random letter. Can map to same letter.
 
-        Dictionary<char, char> cipher = new Dictionary<char, char>();
+        Dictionary<string, string> cipher = new Dictionary<string, string>();
         string lettersLeft = alphabet;
         foreach (char letter in alphabet)
         {
             int letterIndex = Random.Range(0, lettersLeft.Length - 1);
-            cipher.Add(letter, lettersLeft[letterIndex]);
+            cipher.Add(letter.ToString(), lettersLeft[letterIndex].ToString());
             lettersLeft.Remove(letterIndex);
         }
 
@@ -43,9 +72,10 @@ public class PanelManager : MonoBehaviour
     string Encrypt(string message)
     {
         string encryptedMessage = "";
-        foreach (char letter in message)
+        foreach (char character in message)
         {
-            if (this.cipher.ContainsKey(letter)) encryptedMessage += ("" + this.cipher[letter]);
+            string letter = character.ToString().ToLower();
+            if (this.cipher.ContainsKey(letter)) encryptedMessage += this.cipher[letter];
             else encryptedMessage += letter;
 
         }
