@@ -122,4 +122,16 @@ public class PanelManager : MonoBehaviour
         return encryptedMessage;
     }
 
+    public void NextRound()
+    {
+        // Move round tracker
+        // Inactivate all pages and buttons, except index 0 = unencrypted one.
+        round += 1;
+        for (int i = 1; i < pageButtons.Length; i++)
+        {
+            pageButtons[i].SetActive(false);
+        }
+        SwitchMessage(0);
+    }
+
 }
