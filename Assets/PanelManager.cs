@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PanelManager : MonoBehaviour
 {
@@ -62,18 +63,29 @@ public class PanelManager : MonoBehaviour
 
         Dictionary<string, string> cipher = new Dictionary<string, string>();
         string lettersLeft = alphabet;
-        foreach (char letter in alphabet)
+
+        System.Random r = new System.Random();
+        string randomOrder = new string(alphabet.ToCharArray().OrderBy(s => (r.Next(2) % 2) == 0).ToArray()); //Said to be not very good random sort
+        for (int i = 0; i <randomOrder.Length; i++)
+        {
+            cipher.Add(alphabet[i].ToString(), randomOrder[i].ToString());
+        }
+        /*foreach (char letter in alphabet)
         {
             int letterIndex = Random.Range(0, lettersLeft.Length - 1);
             cipher.Add(letter.ToString(), lettersLeft[letterIndex].ToString());
             lettersLeft.Remove(letterIndex);
-        }
+
+
+            Debug.Log(alphabet + ", " + lettersLeft);
+        }*/
 
         return cipher;
     }
 
     string Encrypt(string message)
     {
+        Debug.Log(message);
         string encryptedMessage = "";
         foreach (char character in message)
         {
@@ -82,6 +94,7 @@ public class PanelManager : MonoBehaviour
             else encryptedMessage += letter;
 
         }
+        Debug.Log(encryptedMessage);
         return encryptedMessage;
     }
 
