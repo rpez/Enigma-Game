@@ -26,7 +26,7 @@ public class PanelManager : MonoBehaviour
         messages = new List<Message>(messagesArray);
         orders = new List<Order>(orderArray);
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 4; i++)
         {
             OrderElement order = Instantiate(orderElementPrefab, orderContainer.transform);
             order.Initialize(orders[i]);
