@@ -11,7 +11,7 @@ public class PanelManager : MonoBehaviour
     [SerializeField] GameObject orderContainer;
     [SerializeField] GameObject encryptionContainer;
 
-    const string alphabet = "abcdefghijklmnopqrstuvxyz";
+    const string alphabet = "abcdefghijklmnopqrstuvwxyz";
     Dictionary<string, string> cipher;
     List<Message> messages;
     List<Order> orders;
