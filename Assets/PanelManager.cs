@@ -39,7 +39,7 @@ public class PanelManager : MonoBehaviour
 
     public void SwitchMessage(int page)
     {
-        NewMessage(messages[page].message);
+        NewMessage(Encrypt(messages[page].message));
     }
 
     // Update is called once per frame
@@ -48,7 +48,8 @@ public class PanelManager : MonoBehaviour
         roundTimer += Time.deltaTime;
         foreach (Message message in messages)
         {
-            if (message.round == round && roundTimer >= message.time)
+            //Debug.Log(message.round +", "+roundTimer+)
+            if (message.round == round && roundTimer >= message.time && !pageButtons[message.id].activeSelf)
             {
                 pageButtons[message.id].SetActive(true);
                 //string encryptedMessage = Encrypt(message.message);
