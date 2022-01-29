@@ -7,6 +7,7 @@ public class PanelManager : MonoBehaviour
 {
     [SerializeField] Message[] messagesArray;
     [SerializeField] Order[] orderArray;
+    [SerializeField] GameObject[] pageButtons;
 
     [SerializeField] OrderElement orderElementPrefab;
     [SerializeField] GameObject orderContainer;
@@ -36,6 +37,11 @@ public class PanelManager : MonoBehaviour
         
     }
 
+    public void SwitchMessage(int page)
+    {
+        NewMessage(messages[page].message);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -44,6 +50,7 @@ public class PanelManager : MonoBehaviour
         {
             if (message.round == round && roundTimer >= message.time)
             {
+                pageButtons[message.id].SetActive(true);
                 string encryptedMessage = Encrypt(message.message);
                 NewMessage(encryptedMessage);
                 messages.Remove(message);

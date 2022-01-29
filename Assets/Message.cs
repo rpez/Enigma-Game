@@ -8,4 +8,5 @@ public class Message : ScriptableObject
     public int round;
     public int time;
     [TextArea(3, 15)] public string message;
+    public int id;
 }
