@@ -51,9 +51,9 @@ public class PanelManager : MonoBehaviour
             if (message.round == round && roundTimer >= message.time)
             {
                 pageButtons[message.id].SetActive(true);
-                string encryptedMessage = Encrypt(message.message);
-                NewMessage(encryptedMessage);
-                messages.Remove(message);
+                //string encryptedMessage = Encrypt(message.message);
+                //NewMessage(encryptedMessage);
+                //messages.Remove(message);
                 break;
             }
         }

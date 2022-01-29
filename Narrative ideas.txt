@@ -4,3 +4,8 @@ Viestit puolisolta
  - Tieto puolison nykyisestä asuinpaikasta, Saattaa muuttua kesken pelin
      - merkittävää joidenkin hyökkäysten tai puollustusten kannalta
 
+Sääviestit
+ - hämäystä
+
+Toisiin viesteihin viittaavat viestit
+ - seuraava viesti on virheellinen.
