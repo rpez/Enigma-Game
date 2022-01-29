@@ -6,6 +6,7 @@ using UnityEngine;
 public class EncryptedMessageManager : MonoBehaviour
 {
     public GameObject letterFieldPrefab;
+    public float spaceBetweenLetters;
 
     private string testString = "This is a message";
 
@@ -35,7 +36,7 @@ public class EncryptedMessageManager : MonoBehaviour
                 GameObject obj = GameObject.Instantiate(letterFieldPrefab, transform);
                 obj.name = "TextField" + index;
                 letterFieldObjects.Add(obj);
-                obj.transform.position = obj.transform.position + Vector3.right * i * 20;
+                obj.transform.position = obj.transform.position + Vector3.right * i * spaceBetweenLetters;
 
                 TMP_InputField field = obj.GetComponent<TMP_InputField>();
                 letterFieldTexts.Add(field);

@@ -74,7 +74,8 @@ public class LetterField : MonoBehaviour
     {
         if (animate)
         {
-            background.color = new Color(background.color.r, background.color.b, background.color.g, Mathf.PingPong(Time.time, cursorAnimationSpeed));
+            background.color = new Color(background.color.r, background.color.b, background.color.g,
+                Mathf.PingPong(Time.time * cursorAnimationSpeed, 1f));
         }
     }
 }
