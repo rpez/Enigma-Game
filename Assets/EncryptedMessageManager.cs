@@ -65,23 +65,21 @@ public class EncryptedMessageManager : MonoBehaviour
 
     public void UpdateCipherLetters(string letter, string updatedLetter)
     {
-        //if (updatedLetters.ContainsKey(updatedLetter))
-        //{
-        //    for (int i = 0; i < updatedLetters[updatedLetter].Count; i++)
-        //    {
-        //        int index = updatedLetters[updatedLetter][i];
-        //        letterFieldTexts[index].text = "";
-        //    }
-        //    updatedLetters.Remove(updatedLetter);
-        //}
-        //updatedLetters.Add(updatedLetter, new List<int>());
+        for (int i = 0; i < currentLetters.Length; i++)
+        {
+            if (!letterIndexConnections[letter].Contains(i))
+            {
+                if (currentLetters[i] == updatedLetter) {
+                    currentLetters[i] = "";
+                    letterFieldTexts[i].text = "";
+                }
+            }
+        }
         for (int i = 0; i < letterIndexConnections[letter].Count; i++)
         {
             int index = letterIndexConnections[letter][i];
-            //updatedLetters.Remove(currentLetters[index]);
             letterFieldTexts[index].text = updatedLetter;
-            //updatedLetters[updatedLetter].Add(index);
-            //currentLetters[index] = updatedLetter;
+            currentLetters[index] = updatedLetter;
         }
     }
 
