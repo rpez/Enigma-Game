@@ -413,6 +413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6c6b60f88a6ec41b4e23d6dd5d82bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorAnimationSpeed: 1
+  encryptedLetter: 
 --- !u!1 &2990010831629467263
 GameObject:
   m_ObjectHideFlags: 0

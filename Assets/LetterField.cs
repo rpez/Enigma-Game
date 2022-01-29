@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +9,7 @@ public class LetterField : MonoBehaviour
 
     private Image background;
     private TMP_InputField inputField;
-    private string encryptedLetter;
+    public string encryptedLetter;
     private int index;
     private Action<string, string> onChangeCallback;
     private Action<int, bool> highlightCallback;
@@ -42,12 +40,14 @@ public class LetterField : MonoBehaviour
     {
         editing = true;
         StartHighlight(Color.white);
+        highlightCallback.Invoke(index, true);
     }
 
     public void OnDeselect()
     {
         editing = false;
         StopHighlight();
+        highlightCallback.Invoke(index, false);
     }
 
     public void StartHighlight(Color color)
