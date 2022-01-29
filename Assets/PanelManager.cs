@@ -8,6 +8,8 @@ public class PanelManager : MonoBehaviour
     [SerializeField] Message[] messagesArray;
     [SerializeField] Order[] orderArray;
     [SerializeField] GameObject[] pageButtons;
+    [SerializeField] EncryptedMessageManager[] encryptionPanels;
+    [SerializeField] GameObject missionStartPanel;
 
     [SerializeField] OrderElement orderElementPrefab;
     [SerializeField] GameObject orderContainer;
@@ -39,7 +41,12 @@ public class PanelManager : MonoBehaviour
 
     public void SwitchMessage(int page)
     {
-        NewMessage(Encrypt(messages[page].message));
+        //NewMessage(Encrypt(messages[page].message));
+        for (int i = 0; i < encryptionPanels.Length; i++)
+        {
+            if (i == page) Debug.Log("Selected: " + i);
+            encryptionPanels[i].gameObject.SetActive(i == page);
+        }
     }
 
     // Update is called once per frame
@@ -49,20 +56,29 @@ public class PanelManager : MonoBehaviour
         foreach (Message message in messages)
         {
             //Debug.Log(message.round +", "+roundTimer+)
-            if (message.round == round && roundTimer >= message.time && !pageButtons[message.id].activeSelf)
+            if (message.round == round && roundTimer >= message.time)
             {
                 pageButtons[message.id].SetActive(true);
-                //string encryptedMessage = Encrypt(message.message);
-                //NewMessage(encryptedMessage);
-                //messages.Remove(message);
+                
+                if (message.encrypted)
+                {
+                    string encryptedMessage = Encrypt(message.message);
+                    NewMessage(encryptedMessage, message.id);
+                } else
+                {
+                    NewMessage(message.message, message.id);
+                }
+                messages.Remove(message);
+
+
                 break;
             }
         }
     }
 
-    void NewMessage(string message)
+    void NewMessage(string message, int id)
     {
-        encryptionContainer.GetComponent<EncryptedMessageManager>().GenerateMessage(message);
+        encryptionPanels[id].GenerateMessage(message);
     }
 
     Dictionary<string, string> CreateCipher()
