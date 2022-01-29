@@ -7,7 +7,9 @@ using TMPro;
 
 public class OrderButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] Color newColor;
     [SerializeField] Color onHoverColor;
+    [SerializeField] Color normalColor;
 
     private Color originalColor;
     private TextMeshProUGUI tmp;
@@ -18,7 +20,13 @@ public class OrderButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         outline = GetComponent<Outline>();
         //button = GetComponent<Button>();
         tmp = GetComponentInChildren<TextMeshProUGUI>();
-        originalColor = tmp.color;
+        //originalColor = tmp.color;
+    }
+
+    public void OnEnable()
+    {
+        tmp.color = newColor;
+        outline.effectColor = newColor;
     }
 
     public void Initialize(string text) //TODO: add other effects
@@ -35,8 +43,8 @@ public class OrderButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        tmp.color = originalColor;
-        outline.effectColor = originalColor;
+        tmp.color = normalColor;
+        outline.effectColor = normalColor;
     }
 
     public void OnClick()
