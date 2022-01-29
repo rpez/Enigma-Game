@@ -40,7 +40,7 @@ public class EncryptedMessageManager : MonoBehaviour
                 letterFieldTexts.Add(field);
 
                 LetterField letterScript = obj.GetComponent<LetterField>();
-                letterScript.Initalize(letter, UpdateCipherLetters);
+                letterScript.Initalize(letter, UpdateCipherLetters, i, UpdateHighlights);
                 letterFields.Add(letterScript);
 
                 field.placeholder.GetComponent<TMP_Text>().text = letter;
@@ -80,6 +80,24 @@ public class EncryptedMessageManager : MonoBehaviour
             int index = letterIndexConnections[letter][i];
             letterFieldTexts[index].text = updatedLetter;
             currentLetters[index] = updatedLetter;
+        }
+    }
+
+    public void UpdateHighlights(int index, bool active)
+    {
+        for (int i = 0; i < letterIndexConnections[currentLetters[index]].Count; i++)
+        {
+            if (i != index)
+            {
+                if (active)
+                {
+                    letterFields[index].StartHighlight(Color.grey);
+                }
+                else
+                {
+                    letterFields[index].StopHighlight();
+                }
+            }
         }
     }
 
