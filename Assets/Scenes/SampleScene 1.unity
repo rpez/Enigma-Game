@@ -920,4 +920,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   letterFieldPrefab: {fileID: 2990010831392457158, guid: 06682b8bd563c0d45a0d41deea687429, type: 3}
-  spaceBetweenLetters: 30
