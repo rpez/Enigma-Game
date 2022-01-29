@@ -334,10 +334,34 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8834159920906277544}
+        m_TargetAssemblyTypeName: LetterField, Assembly-CSharp
+        m_MethodName: OnSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8834159920906277544}
+        m_TargetAssemblyTypeName: LetterField, Assembly-CSharp
+        m_MethodName: OnDeselect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTextSelection:
     m_PersistentCalls:
       m_Calls: []
@@ -349,7 +373,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8834159920906277544}
         m_TargetAssemblyTypeName: LetterField, Assembly-CSharp
-        m_MethodName: OnValueChanged
+        m_MethodName: OnChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

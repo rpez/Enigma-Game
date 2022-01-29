@@ -14,6 +14,8 @@ public class EncryptedMessageManager : MonoBehaviour
     private List<LetterField> letterFields;
 
     private Dictionary<string, List<int>> letterIndexConnections;
+    private Dictionary<string, List<int>> updatedLetters =  new Dictionary<string, List<int>>();
+    private string[] currentLetters;
 
     public void GenerateMessage(string text)
     {
@@ -21,6 +23,7 @@ public class EncryptedMessageManager : MonoBehaviour
         letterFieldTexts = new List<TMP_InputField>();
         letterFields = new List<LetterField>();
         letterIndexConnections = new Dictionary<string, List<int>>();
+        currentLetters = new string[text.Length];
 
         int whiteSpaceOffset = 0;
         for (int i = 0; i < text.Length; i++)
@@ -29,6 +32,7 @@ public class EncryptedMessageManager : MonoBehaviour
             if (letter != " ")
             {
                 GameObject obj = GameObject.Instantiate(letterFieldPrefab, transform);
+                obj.name = "TextField" + i;
                 letterFieldObjects.Add(obj);
                 obj.transform.position = obj.transform.position + Vector3.right * i * 20;
 
@@ -40,6 +44,7 @@ public class EncryptedMessageManager : MonoBehaviour
                 letterFields.Add(letterScript);
 
                 field.placeholder.GetComponent<TMP_Text>().text = letter;
+                currentLetters[i - whiteSpaceOffset] = "";
 
                 if (letterIndexConnections.ContainsKey(letter))
                 {
@@ -60,10 +65,23 @@ public class EncryptedMessageManager : MonoBehaviour
 
     public void UpdateCipherLetters(string letter, string updatedLetter)
     {
+        //if (updatedLetters.ContainsKey(updatedLetter))
+        //{
+        //    for (int i = 0; i < updatedLetters[updatedLetter].Count; i++)
+        //    {
+        //        int index = updatedLetters[updatedLetter][i];
+        //        letterFieldTexts[index].text = "";
+        //    }
+        //    updatedLetters.Remove(updatedLetter);
+        //}
+        //updatedLetters.Add(updatedLetter, new List<int>());
         for (int i = 0; i < letterIndexConnections[letter].Count; i++)
         {
             int index = letterIndexConnections[letter][i];
+            //updatedLetters.Remove(currentLetters[index]);
             letterFieldTexts[index].text = updatedLetter;
+            //updatedLetters[updatedLetter].Add(index);
+            //currentLetters[index] = updatedLetter;
         }
     }
 
