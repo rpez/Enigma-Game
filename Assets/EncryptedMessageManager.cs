@@ -10,7 +10,7 @@ public class EncryptedMessageManager : MonoBehaviour
 
     private string testString = "This is a message";
 
-    private List<GameObject> letterFieldObjects;
+    private List<GameObject> letterFieldObjects = new List<GameObject>();
     private List<TMP_InputField> letterFieldTexts;
     private List<LetterField> letterFields;
 
@@ -20,6 +20,10 @@ public class EncryptedMessageManager : MonoBehaviour
 
     public void GenerateMessage(string text)
     {
+        foreach (GameObject letterObj in letterFieldObjects)
+        {
+            Destroy(letterObj);
+        }
         letterFieldObjects = new List<GameObject>();
         letterFieldTexts = new List<TMP_InputField>();
         letterFields = new List<LetterField>();
