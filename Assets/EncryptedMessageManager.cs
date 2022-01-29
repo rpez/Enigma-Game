@@ -107,7 +107,7 @@ public class EncryptedMessageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateMessage(testString);
+        //GenerateMessage(testString);
     }
 
     // Update is called once per frame

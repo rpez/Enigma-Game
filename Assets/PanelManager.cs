@@ -9,6 +9,7 @@ public class PanelManager : MonoBehaviour
 
     [SerializeField] OrderElement orderElementPrefab;
     [SerializeField] GameObject orderContainer;
+    [SerializeField] GameObject encryptionContainer;
 
     const string alphabet = "abcdefghijklmnopqrstuvxyz";
     Dictionary<string, string> cipher;
@@ -26,11 +27,11 @@ public class PanelManager : MonoBehaviour
         messages = new List<Message>(messagesArray);
         orders = new List<Order>(orderArray);
 
-        for (int i = 0; i < 4; i++)
+        /*for (int i = 0; i < 4; i++)
         {
             OrderElement order = Instantiate(orderElementPrefab, orderContainer.transform);
             order.Initialize(orders[i]);
-        }
+        }*/
         
     }
 
@@ -52,7 +53,7 @@ public class PanelManager : MonoBehaviour
 
     void NewMessage(string message)
     {
-        Debug.Log(message);
+        encryptionContainer.GetComponent<EncryptedMessageManager>().GenerateMessage(message);
     }
 
     Dictionary<string, string> CreateCipher()

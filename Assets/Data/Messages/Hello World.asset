@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Hello World
   m_EditorClassIdentifier: 
   round: 1
-  time: 2
+  time: 0
   message: Hello World!
