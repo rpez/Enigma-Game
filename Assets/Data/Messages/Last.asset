@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c4283ff9531634d8795b3e72a9e14f, type: 3}
   m_Name: Last
   m_EditorClassIdentifier: 
+  encrypted: 1
   round: 1
   time: 10
   message: Ten seconds has passed. This is the last message.
-  id: 2
+  id: 3

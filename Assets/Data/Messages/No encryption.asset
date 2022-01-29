@@ -10,20 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20c4283ff9531634d8795b3e72a9e14f, type: 3}
-  m_Name: Test Message
+  m_Name: No encryption
   m_EditorClassIdentifier: 
-  encrypted: 1
   round: 1
-  time: 5
-  message: 'Dear reciever of this message,
-
-
-    This is an example message that
-    will be encrypted. Try to decrypt this by changing the letters one at a time.
-
-
-    Best
-    Regards,
-
-    Mr. X'
-  id: 2
+  time: 0
+  message: This message is not encrypted.
+  id: 0
