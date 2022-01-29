@@ -6,6 +6,7 @@ using UnityEngine;
 public class EncryptedMessageManager : MonoBehaviour
 {
     public GameObject letterFieldPrefab;
+    public float spaceBetweenLetters;
 
     private string testString = "This is a message";
 
@@ -14,7 +15,7 @@ public class EncryptedMessageManager : MonoBehaviour
     private List<LetterField> letterFields;
 
     private Dictionary<string, List<int>> letterIndexConnections;
-    private Dictionary<string, List<int>> updatedLetters =  new Dictionary<string, List<int>>();
+    //private Dictionary<string, List<int>> updatedLetters =  new Dictionary<string, List<int>>();
     private string[] currentLetters;
 
     public void GenerateMessage(string text)
@@ -29,31 +30,32 @@ public class EncryptedMessageManager : MonoBehaviour
         for (int i = 0; i < text.Length; i++)
         {
             string letter = text[i].ToString();
+            int index = i - whiteSpaceOffset;
             if (letter != " ")
             {
                 GameObject obj = GameObject.Instantiate(letterFieldPrefab, transform);
-                obj.name = "TextField" + i;
+                obj.name = "TextField" + index;
                 letterFieldObjects.Add(obj);
-                obj.transform.position = obj.transform.position + Vector3.right * i * 20;
+                obj.transform.position = obj.transform.position + Vector3.right * i * spaceBetweenLetters;
 
                 TMP_InputField field = obj.GetComponent<TMP_InputField>();
                 letterFieldTexts.Add(field);
 
                 LetterField letterScript = obj.GetComponent<LetterField>();
-                letterScript.Initalize(letter, UpdateCipherLetters);
+                letterScript.Initalize(letter, UpdateCipherLetters, index, UpdateHighlights);
                 letterFields.Add(letterScript);
 
                 field.placeholder.GetComponent<TMP_Text>().text = letter;
-                currentLetters[i - whiteSpaceOffset] = "";
+                currentLetters[index] = "";
 
                 if (letterIndexConnections.ContainsKey(letter))
                 {
-                    letterIndexConnections[letter].Add(i - whiteSpaceOffset);
+                    letterIndexConnections[letter].Add(index);
                 }
                 else
                 {
                     letterIndexConnections.Add(letter, new List<int>());
-                    letterIndexConnections[letter].Add(i - whiteSpaceOffset);
+                    letterIndexConnections[letter].Add(index);
                 }
             }
             else
@@ -80,6 +82,25 @@ public class EncryptedMessageManager : MonoBehaviour
             int index = letterIndexConnections[letter][i];
             letterFieldTexts[index].text = updatedLetter;
             currentLetters[index] = updatedLetter;
+        }
+    }
+
+    public void UpdateHighlights(int index, bool active)
+    {
+        for (int i = 0; i < letterIndexConnections[letterFields[index].encryptedLetter].Count; i++)
+        {
+            int k = letterIndexConnections[letterFields[index].encryptedLetter][i];
+            if (k != index)
+            {
+                if (active)
+                {
+                    letterFields[k].StartHighlight(Color.grey);
+                }
+                else
+                {
+                    letterFields[k].StopHighlight();
+                }
+            }
         }
     }
 
