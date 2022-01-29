@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PanelManager : MonoBehaviour
 {
-
     [SerializeField] Message[] messagesArray;
+    [SerializeField] Order[] orderArray;
+
+    [SerializeField] OrderButton orderButtonPrefab;
+    [SerializeField] GameObject orderContainer;
 
     const string alphabet = "abcdefghijklmnopqrstuvxyz";
     Dictionary<string, string> cipher;
@@ -20,6 +23,13 @@ public class PanelManager : MonoBehaviour
         cipher = CreateCipher();
         roundTimer = 0f;
         messages = new List<Message>(messagesArray);
+
+        for (int i = 0; i < 10; i++)
+        {
+            OrderButton button = Instantiate(orderButtonPrefab, orderContainer.transform);
+            button.Initialize("Send Units");
+        }
+        
     }
 
     // Update is called once per frame
