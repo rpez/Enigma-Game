@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,15 +8,13 @@ public class EncryptedMessageManager : MonoBehaviour
 {
     public GameObject letterFieldPrefab;
     public float spaceBetweenLetters;
-
-    private string testString = "This is a message";
+    public float lettersPerRow;
 
     private List<GameObject> letterFieldObjects = new List<GameObject>();
     private List<TMP_InputField> letterFieldTexts;
     private List<LetterField> letterFields;
 
     private Dictionary<string, List<int>> letterIndexConnections;
-    //private Dictionary<string, List<int>> updatedLetters =  new Dictionary<string, List<int>>();
     private string[] currentLetters;
 
     public void GenerateMessage(string text)
@@ -31,16 +30,26 @@ public class EncryptedMessageManager : MonoBehaviour
         currentLetters = new string[text.Length];
 
         int whiteSpaceOffset = 0;
+        int xOffset = 0;
+        int yOffset = 0;
+        int currentRowLetters = 0;
         for (int i = 0; i < text.Length; i++)
         {
             string letter = text[i].ToString();
             int index = i - whiteSpaceOffset;
-            if (letter != " ")
+            if (letter == "\n")
+            {
+                currentRowLetters = 0;
+                xOffset = 0;
+                yOffset++;
+                whiteSpaceOffset++;
+            }
+            else if (letter != " ")
             {
                 GameObject obj = GameObject.Instantiate(letterFieldPrefab, transform);
                 obj.name = "TextField" + index;
                 letterFieldObjects.Add(obj);
-                obj.transform.position = obj.transform.position + Vector3.right * i * spaceBetweenLetters;
+                obj.transform.position = obj.transform.position + Vector3.right * xOffset * spaceBetweenLetters + Vector3.down * yOffset * spaceBetweenLetters;
 
                 TMP_InputField field = obj.GetComponent<TMP_InputField>();
                 letterFieldTexts.Add(field);
@@ -61,9 +70,25 @@ public class EncryptedMessageManager : MonoBehaviour
                     letterIndexConnections.Add(letter, new List<int>());
                     letterIndexConnections[letter].Add(index);
                 }
+                currentRowLetters++;
+                xOffset++;
             }
             else
             {
+                int nextWordLength = 0;
+                int k = i + 1;
+                while (k < text.Length && text[k].ToString() != " " && text[k].ToString() != "\n")
+                {
+                    nextWordLength++;
+                    k++;
+                }
+                if (nextWordLength + currentRowLetters > lettersPerRow)
+                {
+                    currentRowLetters = 0;
+                    xOffset = 0;
+                    yOffset++;
+                }
+                else xOffset++;
                 whiteSpaceOffset++;
             }
         }
