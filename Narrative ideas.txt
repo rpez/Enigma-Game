@@ -1,0 +1,6 @@
+
+Viestit puolisolta
+ - Narratiivinen intressi
+ - Tieto puolison nykyisestä asuinpaikasta, Saattaa muuttua kesken pelin
+     - merkittävää joidenkin hyökkäysten tai puollustusten kannalta
+
