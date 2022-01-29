@@ -463,10 +463,10 @@ RectTransform:
   m_Father: {fileID: 658813044}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 764.6634, y: 125.994995}
-  m_SizeDelta: {x: -1645.172, y: -392.76}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 789.24, y: 126}
+  m_SizeDelta: {x: 813.23, y: 687.23}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &967972175
 MonoBehaviour:
@@ -521,10 +521,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: 20
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 0
+  m_Spacing: 20
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -650,8 +650,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea21e8306e4da6b4ab57bfcfc3b6bee1, type: 2}
   - {fileID: 11400000, guid: 3daebf18ed4ee8d4fa7f874be26db3db, type: 2}
   - {fileID: 11400000, guid: b5928cd41f4b2f54eb8afc2eac4f5b9a, type: 2}
-  orderArray: []
-  orderButtonPrefab: {fileID: 7414037420832017378, guid: d0c30f3f08fda2e4086cf3a7f2f5afe4, type: 3}
+  orderArray:
+  - {fileID: 11400000, guid: e0612f5a77346f74b9c323e9a89f1201, type: 2}
+  - {fileID: 11400000, guid: e65451fc01289494286517d8ad2a8115, type: 2}
+  orderElementPrefab: {fileID: 9095615746828838809, guid: e7af91ecdf7078f46a17ba4cff81d831, type: 3}
   orderContainer: {fileID: 967972172}
 --- !u!1 &1898136329
 GameObject:

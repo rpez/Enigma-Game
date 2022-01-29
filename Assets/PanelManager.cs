@@ -7,12 +7,13 @@ public class PanelManager : MonoBehaviour
     [SerializeField] Message[] messagesArray;
     [SerializeField] Order[] orderArray;
 
-    [SerializeField] OrderButton orderButtonPrefab;
+    [SerializeField] OrderElement orderElementPrefab;
     [SerializeField] GameObject orderContainer;
 
     const string alphabet = "abcdefghijklmnopqrstuvxyz";
     Dictionary<string, string> cipher;
     List<Message> messages;
+    List<Order> orders;
 
     private float roundTimer;
     private int round = 1;
@@ -23,11 +24,12 @@ public class PanelManager : MonoBehaviour
         cipher = CreateCipher();
         roundTimer = 0f;
         messages = new List<Message>(messagesArray);
+        orders = new List<Order>(orderArray);
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 2; i++)
         {
-            OrderButton button = Instantiate(orderButtonPrefab, orderContainer.transform);
-            button.Initialize("Send Units");
+            OrderElement order = Instantiate(orderElementPrefab, orderContainer.transform);
+            order.Initialize(orders[i]);
         }
         
     }
