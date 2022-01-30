@@ -125,10 +125,10 @@ public class PanelManager : MonoBehaviour
 
         if (ordersLeftThisRound == 0) NextRound();
 
-        float time = roundtimes[round] - roundTimer;
+        float time = roundtimes[round - 1] - roundTimer;
         if (time > 0f)
         {
-            timer.text = Mathf.CeilToInt(roundtimes[round] - roundTimer).ToString();
+            timer.text = Mathf.CeilToInt(roundtimes[round - 1] - roundTimer).ToString();
         }
         else
         {
