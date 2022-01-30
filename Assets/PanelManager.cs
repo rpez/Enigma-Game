@@ -27,6 +27,7 @@ public class PanelManager : MonoBehaviour
 
     private float roundTimer;
     private int round = 1;
+    private bool roundOnGoing = true;
 
     // Start is called before the first frame update
     void Start()
@@ -100,7 +101,11 @@ public class PanelManager : MonoBehaviour
         {
             timer.text = Mathf.CeilToInt(roundtimes[round] - roundTimer).ToString();
         }
-        else timer.text = "0";
+        else
+        {
+            timer.text = "0";
+            if (roundOnGoing) NextRound();
+        }
     }
 
     void NewMessage(string message, int id)
