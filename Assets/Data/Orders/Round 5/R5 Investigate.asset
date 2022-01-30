@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6224e57dd6e48841abd0fa3c3edeb77, type: 3}
+  m_Name: R5 Investigate
+  m_EditorClassIdentifier: 
+  round: 5
+  time: 15
+  timeLimit: 15
+  option1: The Head City
+  successValue1: 1
+  effects1: The investigators found bombs and defused them.
+  option2: The Citadel City
+  successValue2: -3
+  effects2: The Head City was demolished by secretly planted bombs.
+  description: Which city to investigate?
