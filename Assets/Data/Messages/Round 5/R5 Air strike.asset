@@ -15,7 +15,7 @@ MonoBehaviour:
   encrypted: 1
   appendWithResults: 0
   round: 5
-  time: 10
+  time: 15
   message: 'Order:
 
     Commence Air strike to aid the attack. We want to see the

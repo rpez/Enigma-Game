@@ -15,7 +15,7 @@ MonoBehaviour:
   encrypted: 1
   appendWithResults: 0
   round: 4
-  time: 10
+  time: 20
   message: 'Order:
 
     Pull out all forces from the West. We need to prepare for

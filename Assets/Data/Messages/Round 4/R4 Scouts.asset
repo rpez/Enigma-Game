@@ -15,7 +15,7 @@ MonoBehaviour:
   encrypted: 1
   appendWithResults: 0
   round: 4
-  time: 20
+  time: 10
   message: 'Order:
 
     We need to cut off their support. Send scouts to sabotage

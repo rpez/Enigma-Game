@@ -15,7 +15,7 @@ MonoBehaviour:
   encrypted: 1
   appendWithResults: 0
   round: 5
-  time: 15
+  time: 10
   message: 'Order:
 
     Leave bombs to The Citadel City. We can use the explosion
