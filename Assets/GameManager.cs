@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
         else
         {
             _instance = this;
+            currentWarStatus = startingWarStatus;
         }
     }
 
@@ -26,10 +27,20 @@ public class GameManager : MonoBehaviour
     public int currentWarStatus;
     public string currentSummary;
 
-    public void UpdateGameStatus(int value, string effect)
+    private int round = 0;
+
+    public void UpdateGameStatus(int value, string effect, int round)
     {
+        if (this.round != round)
+        {
+            currentSummary = "";
+            this.round = round;
+        }
+
         currentWarStatus += value;
         currentSummary += effect + " ";
+
+
     }
 
     public void ResetSummary()

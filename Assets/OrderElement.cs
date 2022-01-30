@@ -30,7 +30,7 @@ public class OrderElement : MonoBehaviour
         int value = button == 0 ? order.successValue1 : order.successValue2;
         string effect = button == 0 ? order.effects1 : order.effects2;
 
-        GameManager.Instance.UpdateGameStatus(value, effect);
+        GameManager.Instance.UpdateGameStatus(value, effect, this.order.round);
 
         Destroy(gameObject);
     }

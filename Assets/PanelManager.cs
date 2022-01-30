@@ -46,6 +46,8 @@ public class PanelManager : MonoBehaviour
             + new string('-', 20 - GameManager.Instance.currentWarStatus)
             + "]";
 
+        Debug.Log(GameManager.Instance.currentWarStatus);
+
         str = str.Insert(6, "|");
         str = str.Insert(12, "|");
         str = str.Insert(18, "|");
@@ -137,12 +139,12 @@ public class PanelManager : MonoBehaviour
         }
 
 
-        if (resetBool)
+        /*if (resetBool)
         {
             Debug.Log("Summary reseted");
             GameManager.Instance.ResetSummary();
         }
-        resetBool = false;
+        resetBool = false;*/
 
     }
 
@@ -198,6 +200,11 @@ public class PanelManager : MonoBehaviour
         // Inactivate all pages and buttons, except index 0 = unencrypted one.
         round += 1;
 
+        if (round > 7)
+        {
+            round = 1;
+            GameManager.Instance.currentWarStatus = GameManager.Instance.startingWarStatus;
+        }
         if (round > 5)
         {
             if (GameManager.Instance.currentWarStatus >= 10) round = 8; // Bad ending
@@ -226,7 +233,7 @@ public class PanelManager : MonoBehaviour
         if (destroyedCount > 0)
         {
             // Negative points for unanswered questions
-            GameManager.Instance.UpdateGameStatus(-destroyedCount, "There was chaos among the units, because they did not some orders.");
+            GameManager.Instance.UpdateGameStatus(-destroyedCount, "There was chaos among the units, because they did not some orders.", round);
         }
 
         string str =
