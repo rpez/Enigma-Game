@@ -65,10 +65,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 20
-    m_Bottom: 0
+    m_Top: 50
+    m_Bottom: 50
   m_ChildAlignment: 1
-  m_Spacing: 100
+  m_Spacing: 150
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -176,8 +176,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4fd170fd43faeba4882ed98d68b5be00, type: 2}
+  m_sharedMaterial: {fileID: -1090460989522755114, guid: 4fd170fd43faeba4882ed98d68b5be00, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: 40
   m_PreferredWidth: 268.75
-  m_PreferredHeight: 40.22
+  m_PreferredHeight: 70
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
