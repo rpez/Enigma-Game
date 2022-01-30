@@ -39,12 +39,17 @@ public class PanelManager : MonoBehaviour
         messages = new List<Message>(messagesArray);
         orders = new List<Order>(orderArray);
 
-        /*for (int i = 0; i < 4; i++)
-        {
-            OrderElement order = Instantiate(orderElementPrefab, orderContainer.transform);
-            order.Initialize(orders[i]);
-        }*/
-        
+        string str =
+            "["
+            + new string('=', GameManager.Instance.currentWarStatus)
+            + new string('-', 20 - GameManager.Instance.currentWarStatus)
+            + "]";
+
+        str = str.Insert(6, "|");
+        str = str.Insert(12, "|");
+        str = str.Insert(18, "|");
+
+        statusBar.text = str;
     }
 
     public void SwitchMessage(int page)
@@ -179,11 +184,17 @@ public class PanelManager : MonoBehaviour
             if (orderElementActive[i] != null) Destroy(orderElementActive[i].gameObject);
         }
 
-        statusBar.text =
+        string str =
             "["
             + new string('=', GameManager.Instance.currentWarStatus)
             + new string('-', 20 - GameManager.Instance.currentWarStatus)
             + "]";
+
+        str = str.Insert(6, "|");
+        str = str.Insert(12, "|");
+        str = str.Insert(18, "|");
+
+        statusBar.text = str;
 
         SwitchMessage(0);
     }

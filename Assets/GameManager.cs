@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
+        currentWarStatus = startingWarStatus;
     }
 
     public int enemySuspicionThreshold = 15;
