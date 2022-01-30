@@ -67,7 +67,9 @@ public class PanelManager : MonoBehaviour
             if (message.round == round && roundTimer >= message.time)
             {
                 pageButtons[message.id].SetActive(true);
-                
+
+                //if (message.id == 0) GameManager.Instance.ResetSummary();
+
                 if (message.encrypted)
                 {
                     string encryptedMessage = Encrypt(message.message);
@@ -90,6 +92,8 @@ public class PanelManager : MonoBehaviour
             }
         }
 
+
+        int ordersLeftThisRound = 0;
         foreach (Order order in orders)
         {
             //Debug.Log(message.round +", "+roundTimer+)
@@ -104,7 +108,17 @@ public class PanelManager : MonoBehaviour
 
                 break;
             }
+
+            if (order.round == round) ordersLeftThisRound++;
+
         }
+
+        foreach (OrderElement orderElement in orderElementActive)
+        {
+            if (orderElement != null) ordersLeftThisRound++;
+        }
+
+        if (ordersLeftThisRound == 0) NextRound();
 
         float time = roundtimes[round] - roundTimer;
         if (time > 0f)
@@ -116,6 +130,8 @@ public class PanelManager : MonoBehaviour
             timer.text = "0";
             NextRound();
         }
+
+
     }
 
     void NewMessage(string message, int id)
@@ -185,12 +201,28 @@ public class PanelManager : MonoBehaviour
         {
             pageButtons[i].SetActive(false);
         }
+
+        int destroyedCount = 0;
         for (int i = 0; i < orderElementActive.Count; i++)
         {
-            if (orderElementActive[i] != null) Destroy(orderElementActive[i].gameObject);
+            if (orderElementActive[i] != null)
+            {
+                Destroy(orderElementActive[i].gameObject);
+                destroyedCount++;
+            }
+        }
+        if (destroyedCount > 0)
+        {
+            // Negative points for unanswered questions
+            GameManager.Instance.UpdateGameStatus(-destroyedCount, "There was chaos among the units, because they did not some orders.");
         }
 
-        GameManager.Instance.ResetSummary();
+        statusBar.text =
+            "["
+            + new string('=', GameManager.Instance.currentWarStatus)
+            + new string('-', 20 - GameManager.Instance.currentWarStatus)
+            + "]";
+
         SwitchMessage(0);
 
     }
