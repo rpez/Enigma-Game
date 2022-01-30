@@ -18,7 +18,7 @@ MonoBehaviour:
   time: 5
   message: 'Order:
 
-    Send units to the west border of enemy territory. Order is
+    Send units to the east border of enemy territory. Order is
     effective immeadiately.
 
 

@@ -10,17 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6224e57dd6e48841abd0fa3c3edeb77, type: 3}
-  m_Name: R1 Q1
+  m_Name: R2 Order 2
   m_EditorClassIdentifier: 
-  round: 1
-  time: 10
+  round: 3
+  time: 45
   timeLimit: 0
   option1: West
-  successValue1: -2
-  effects1: Enemy claimed part of Eastern territory.
-  option2: East
-  successValue2: 1
-  effects2: 'East  border was defended successfully. '
-  description: 'Which border to reinforce?
-
-'
+  successValue1: 2
+  effects1: West territory claimed.
+  option2: North
+  successValue2: -1
+  effects2: Unit lost in a battle at North border.
+  description: Where to attack?

@@ -10,17 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20c4283ff9531634d8795b3e72a9e14f, type: 3}
-  m_Name: R2 Attack plan
+  m_Name: 0 R3 Summary
   m_EditorClassIdentifier: 
-  encrypted: 1
-  appendWithResults: 0
-  round: 2
-  time: 10
-  message: 'Order:
-
-    We will attack enemy West border. They will not see us coming,
-    as their main forces are towards East.
-
-
-    Commander'
-  id: 2
+  encrypted: 0
+  appendWithResults: 1
+  round: 3
+  time: 0
+  message: Enemy seems to be changing the cipher more frequently. They might suspect
+    we are cracking the messages. We must be more careful with our actions.
+  id: 0

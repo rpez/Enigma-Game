@@ -10,17 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6224e57dd6e48841abd0fa3c3edeb77, type: 3}
-  m_Name: R1 Q1
+  m_Name: R2 Order
   m_EditorClassIdentifier: 
-  round: 1
-  time: 10
+  round: 3
+  time: 30
   timeLimit: 0
-  option1: West
-  successValue1: -2
-  effects1: Enemy claimed part of Eastern territory.
-  option2: East
+  option1: Yes
+  successValue1: -1
+  effects1: Units were sent to defend East but there were no enemy units.
+  option2: No
   successValue2: 1
-  effects2: 'East  border was defended successfully. '
-  description: 'Which border to reinforce?
-
-'
+  effects2: Units rested.
+  description: Send reinforcement to defend East?

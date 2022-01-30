@@ -29,6 +29,7 @@ public class PanelManager : MonoBehaviour
 
     private float roundTimer;
     private int round = 1;
+    private bool resetBool;
     //private bool roundOnGoing = true;
 
     // Start is called before the first frame update
@@ -66,14 +67,13 @@ public class PanelManager : MonoBehaviour
     void Update()
     {
         roundTimer += Time.deltaTime;
+
         foreach (Message message in messages)
         {
             //Debug.Log(message.round +", "+roundTimer+)
             if (message.round == round && roundTimer >= message.time)
             {
                 pageButtons[message.id].SetActive(true);
-
-                //if (message.id == 0) GameManager.Instance.ResetSummary();
 
                 if (message.encrypted)
                 {
@@ -136,6 +136,9 @@ public class PanelManager : MonoBehaviour
             NextRound();
         }
 
+
+        if (resetBool) GameManager.Instance.ResetSummary();
+        resetBool = false;
 
     }
 
@@ -235,6 +238,8 @@ public class PanelManager : MonoBehaviour
         statusBar.text = str;
 
         SwitchMessage(0);
+
+        resetBool = true;
 
     }
 
