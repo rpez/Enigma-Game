@@ -590,7 +590,7 @@ PrefabInstance:
       objectReference: {fileID: 95189}
     - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
       propertyPath: orderArray.Array.size
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
       propertyPath: roundtimes.Array.size
@@ -598,7 +598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
       propertyPath: messagesArray.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
       propertyPath: orderArray.Array.data[4]
@@ -624,6 +624,22 @@ PrefabInstance:
       propertyPath: roundtimes.Array.data[4]
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
+      propertyPath: messagesArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c915fc89911caab418b38f2adee20098, type: 2}
+    - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
+      propertyPath: messagesArray.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: d60eb94d75c29f341b00efc82ec52ed3, type: 2}
+    - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
+      propertyPath: messagesArray.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: d023dbdb382e99543b421e90983fe4f7, type: 2}
+    - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
+      propertyPath: messagesArray.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1b159a075bd97a9478ee690a9c1e1afd, type: 2}
     - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
       propertyPath: messagesArray.Array.data[4]
       value: 
