@@ -25,6 +25,8 @@ public class PanelManager : MonoBehaviour
     List<Message> messages;
     List<Order> orders;
 
+    List<OrderElement> orderElementActive;
+
     private float roundTimer;
     private int round = 1;
 
@@ -88,6 +90,7 @@ public class PanelManager : MonoBehaviour
 
                 OrderElement orderElement = (OrderElement) Instantiate(orderElementPrefab, orderContainer.transform);
                 orderElement.Initialize(order);
+                orderElementActive.Add(orderElement);
 
                 orders.Remove(order);
 
@@ -158,6 +161,11 @@ public class PanelManager : MonoBehaviour
         {
             pageButtons[i].SetActive(false);
         }
+        for (int i = 1; i < orderElementActive.Length; i++)
+        {
+            Destroy(orderElement[i].gameObject);
+        }
+
         SwitchMessage(0);
     }
 
