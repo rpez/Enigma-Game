@@ -23,8 +23,8 @@ public class GameManager : MonoBehaviour
     public int warSuccessThreshold = 8;
     public int startingWarStatus = 10;
 
-    private int currentWarStatus;
-    private string currentSummary;
+    public int currentWarStatus;
+    public string currentSummary;
 
     public void UpdateGameStatus(int value, string effect)
     {

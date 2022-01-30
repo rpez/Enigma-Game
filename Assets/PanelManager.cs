@@ -73,7 +73,14 @@ public class PanelManager : MonoBehaviour
                     NewMessage(encryptedMessage, message.id);
                 } else
                 {
-                    NewMessage(message.message, message.id);
+                    if (message.appendWithResults)
+                    {
+                        NewMessage("WEEK " + round + ":\n" + GameManager.Instances.currentSummary + "\n\n" + message.message, message.id);
+                    } else
+                    {
+                        NewMessage("WEEK " + round + ":\n" + message.message, message.id);
+                    }
+                    
                 }
                 messages.Remove(message);
 
