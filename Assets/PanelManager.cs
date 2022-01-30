@@ -169,6 +169,17 @@ public class PanelManager : MonoBehaviour
         // Move round tracker
         // Inactivate all pages and buttons, except index 0 = unencrypted one.
         round += 1;
+
+        if (round > 5)
+        {
+            if (GameManager.Instance.currentWarStatus >= 10) round = 8; // Bad ending
+            else round = 7; // Good ending
+        } else if (round == 5)
+        {
+            if (GameManager.Instance.currentWarStatus >= 15) round = 6; // Bad ending
+            else round = 5; //Good ending
+        }
+
         roundTimer = 0;
         for (int i = 0; i < pageButtons.Length; i++)
         {
@@ -179,7 +190,9 @@ public class PanelManager : MonoBehaviour
             if (orderElementActive[i] != null) Destroy(orderElementActive[i].gameObject);
         }
 
+        GameManager.Instance.ResetSummary();
         SwitchMessage(0);
+
     }
 
 }
