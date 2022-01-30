@@ -50,5 +50,8 @@ public class OrderButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnClick()
     {
         Debug.Log("Button clicked");
+        //TODO call joku funktio
+
+        Destroy(transform.parent.parent.gameObject);
     }
 }

@@ -74,6 +74,21 @@ public class PanelManager : MonoBehaviour
                 break;
             }
         }
+
+        foreach (Order order in orders)
+        {
+            //Debug.Log(message.round +", "+roundTimer+)
+            if (order.round == round && roundTimer >= order.time)
+            {
+
+                OrderElement orderElement = (OrderElement) Instantiate(orderElementPrefab, orderContainer.transform);
+                orderElement.Initialize(order);
+
+                orders.Remove(order);
+
+                break;
+            }
+        }
     }
 
     void NewMessage(string message, int id)

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6224e57dd6e48841abd0fa3c3edeb77, type: 3}
   m_Name: send units 1
   m_EditorClassIdentifier: 
-  round: 0
+  round: 1
   time: 0
   timeLimit: 0
   option1: Send
-  successValue1: 0
-  effects1: 
+  successValue1: 1
+  effects1: Send
   option2: Do not
-  successValue2: 0
-  effects2: 
+  successValue2: -1
+  effects2: Do not
   description: Send units to their death?

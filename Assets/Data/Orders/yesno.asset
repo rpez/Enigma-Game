@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6224e57dd6e48841abd0fa3c3edeb77, type: 3}
   m_Name: yesno
   m_EditorClassIdentifier: 
-  round: 0
-  time: 0
+  round: 1
+  time: 15
   timeLimit: 0
   option1: Yes
-  successValue1: 0
-  effects1: 
+  successValue1: 4
+  effects1: Yes
   option2: No
-  successValue2: 0
-  effects2: 
+  successValue2: 4
+  effects2: No
   description: You have to decide really fast!!
