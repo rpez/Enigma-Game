@@ -33,6 +33,11 @@ public class GameManager : MonoBehaviour
         currentSummary += effect + " ";
     }
 
+    public void ResetSummary()
+    {
+        currentSummary = "";
+    }
+
     // Start is called before the first frame update
     void Start()
     {
