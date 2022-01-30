@@ -592,23 +592,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
       propertyPath: roundtimes.Array.data[0]
-      value: 120
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
       propertyPath: roundtimes.Array.data[1]
-      value: 180
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
       propertyPath: roundtimes.Array.data[2]
-      value: 300
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
       propertyPath: roundtimes.Array.data[3]
-      value: 300
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
       propertyPath: roundtimes.Array.data[4]
-      value: 180
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8007364120161251709, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
       propertyPath: m_Name

@@ -25,10 +25,11 @@ public class PanelManager : MonoBehaviour
     List<Message> messages;
     List<Order> orders;
 
-    List<OrderElement> orderElementActive;
+    List<OrderElement> orderElementActive = new List<OrderElement>();
 
     private float roundTimer;
     private int round = 1;
+    //private bool roundOnGoing = true;
 
     // Start is called before the first frame update
     void Start()
@@ -110,7 +111,11 @@ public class PanelManager : MonoBehaviour
         {
             timer.text = Mathf.CeilToInt(roundtimes[round] - roundTimer).ToString();
         }
-        else timer.text = "0";
+        else
+        {
+            timer.text = "0";
+            NextRound();
+        }
     }
 
     void NewMessage(string message, int id)
@@ -164,13 +169,14 @@ public class PanelManager : MonoBehaviour
         // Move round tracker
         // Inactivate all pages and buttons, except index 0 = unencrypted one.
         round += 1;
-        for (int i = 1; i < pageButtons.Length; i++)
+        roundTimer = 0;
+        for (int i = 0; i < pageButtons.Length; i++)
         {
             pageButtons[i].SetActive(false);
         }
-        for (int i = 1; i < orderElementActive.Length; i++)
+        for (int i = 0; i < orderElementActive.Count; i++)
         {
-            Destroy(orderElement[i].gameObject);
+            Destroy(orderElementActive[i].gameObject);
         }
 
         SwitchMessage(0);
