@@ -98,7 +98,7 @@ public class PanelManager : MonoBehaviour
         float time = roundtimes[round] - roundTimer;
         if (time > 0f)
         {
-            timer.text = (roundtimes[round] - roundTimer + 1f).ToString();
+            timer.text = Mathf.CeilToInt(roundtimes[round] - roundTimer).ToString();
         }
         else timer.text = "0";
     }
