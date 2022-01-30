@@ -137,7 +137,11 @@ public class PanelManager : MonoBehaviour
         }
 
 
-        if (resetBool) GameManager.Instance.ResetSummary();
+        if (resetBool)
+        {
+            Debug.Log("Summary reseted");
+            GameManager.Instance.ResetSummary();
+        }
         resetBool = false;
 
     }
