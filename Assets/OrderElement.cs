@@ -27,15 +27,10 @@ public class OrderElement : MonoBehaviour
 
     public void OnClick(int button)
     {
-        if (button == 0)
-        {
-            Debug.Log(order.successValue1 + ", " + order.effects1);
-        } else
-        {
-            Debug.Log(order.successValue2 + ", " + order.effects2);
-        }
+        int value = button == 0 ? order.successValue1 : order.successValue2;
+        string effect = button == 0 ? order.effects1 : order.effects2;
 
-        //TODO
+        GameManager.Instance.UpdateGameStatus(value, effect);
 
         Destroy(gameObject);
     }
