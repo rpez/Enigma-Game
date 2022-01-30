@@ -18,8 +18,8 @@ MonoBehaviour:
   time: 5
   message: 'Order:
 
-    Unit A will be sent to Defend east. Unit B will be sent to
-    attack west.
+    Unit A will be sent to defend west. Unit B will be sent to
+    Attack east.
 
 
     Commander'
