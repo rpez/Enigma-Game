@@ -76,7 +76,7 @@ public class PanelManager : MonoBehaviour
                 {
                     if (message.appendWithResults)
                     {
-                        NewMessage("WEEK " + round + ":\n" + GameManager.Instances.currentSummary + "\n\n" + message.message, message.id);
+                        NewMessage("WEEK " + round + ":\n" + GameManager.Instance.currentSummary + "\n\n" + message.message, message.id);
                     } else
                     {
                         NewMessage("WEEK " + round + ":\n" + message.message, message.id);
@@ -176,7 +176,7 @@ public class PanelManager : MonoBehaviour
         }
         for (int i = 0; i < orderElementActive.Count; i++)
         {
-            Destroy(orderElementActive[i].gameObject);
+            if (orderElementActive[i] != null) Destroy(orderElementActive[i].gameObject);
         }
 
         SwitchMessage(0);

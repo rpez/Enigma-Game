@@ -394,6 +394,8 @@ MonoBehaviour:
   enemySuspicionThreshold: 12
   warSuccessThreshold: 8
   startingWarStatus: 10
+  currentWarStatus: 0
+  currentSummary: 
 --- !u!4 &1054263557
 Transform:
   m_ObjectHideFlags: 0
@@ -587,9 +589,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 95189}
     - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
+      propertyPath: orderArray.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
       propertyPath: roundtimes.Array.size
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
+      propertyPath: messagesArray.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
+      propertyPath: orderArray.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a0f97bfbcbe7ae468377c3d8adff98a, type: 2}
     - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
       propertyPath: roundtimes.Array.data[0]
       value: 5
@@ -610,6 +624,10 @@ PrefabInstance:
       propertyPath: roundtimes.Array.data[4]
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8007364120161251698, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
+      propertyPath: messagesArray.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6696d458589dffb4db55414af4493e3c, type: 2}
     - target: {fileID: 8007364120161251709, guid: 8518ec97843c7f04c9d593803201f8be, type: 3}
       propertyPath: m_Name
       value: Canvas
