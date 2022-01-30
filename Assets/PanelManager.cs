@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 public class PanelManager : MonoBehaviour
 {
+    public TMP_Text timer;
+    public TMP_Text statusBar;
+    public float[] roundtimes;
+
     [SerializeField] Message[] messagesArray;
     [SerializeField] Order[] orderArray;
     [SerializeField] GameObject[] pageButtons;
@@ -89,6 +94,13 @@ public class PanelManager : MonoBehaviour
                 break;
             }
         }
+
+        float time = roundtimes[round] - roundTimer;
+        if (time > 0f)
+        {
+            timer.text = (roundtimes[round] - roundTimer + 1f).ToString();
+        }
+        else timer.text = "0";
     }
 
     void NewMessage(string message, int id)
