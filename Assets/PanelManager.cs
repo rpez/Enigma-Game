@@ -179,6 +179,12 @@ public class PanelManager : MonoBehaviour
             if (orderElementActive[i] != null) Destroy(orderElementActive[i].gameObject);
         }
 
+        statusBar.text =
+            "["
+            + new string('=', GameManager.Instance.currentWarStatus)
+            + new string('-', 20 - GameManager.Instance.currentWarStatus)
+            + "]";
+
         SwitchMessage(0);
     }
 

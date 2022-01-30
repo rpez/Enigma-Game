@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int enemySuspicionThreshold = 12;
-    public int warSuccessThreshold = 8;
+    public int enemySuspicionThreshold = 15;
+    public int warSuccessThreshold = 10;
     public int startingWarStatus = 10;
 
     public int currentWarStatus;
