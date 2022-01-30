@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6224e57dd6e48841abd0fa3c3edeb77, type: 3}
+  m_Name: R4 MIssile strike
+  m_EditorClassIdentifier: 
+  round: 4
+  time: 7
+  timeLimit: 5
+  option1: Commence strike
+  successValue1: 3
+  effects1: The strike devastated main enemy forces. However, you were later informed
+    that your family were killed in the strike.
+  option2: Don't strike
+  successValue2: -3
+  effects2: Enemy gathers in the North.
+  description: Commence a tactical missile strike to North City?

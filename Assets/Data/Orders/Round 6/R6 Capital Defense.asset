@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6224e57dd6e48841abd0fa3c3edeb77, type: 3}
+  m_Name: R6 Capital Defense
+  m_EditorClassIdentifier: 
+  round: 6
+  time: 13
+  timeLimit: 5
+  option1: Anti-Air
+  successValue1: -10
+  effects1: The enemy air forces were shot down by AA cannons.
+  option2: Land mines
+  successValue2: -10
+  effects2: Land barely did anything, but enemy air forces destroyed half of the
+    city.
+  description: Which defences to build?
