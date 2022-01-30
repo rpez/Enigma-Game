@@ -16,6 +16,8 @@ MonoBehaviour:
   appendWithResults: 1
   round: 1
   time: 0
-  message: Decrypt messages intercepted from enemy forces. We will consult you on
-    all major decissions during the war.
+  message: 'Order:
+
+    Decrypt messages intercepted from enemy forces. We will consult
+    you on all major decissions during the war.'
   id: 0
